@@ -1,0 +1,82 @@
+debug: false
+use_random_seed: true
+seed: 461
+
+fold: ???
+train_folds: ???
+valid_folds: ???
+
+use_wandb: false
+all_data: false
+
+add_syn: true
+add_pl: true
+
+pl_multiplier: 8
+extracted_multiplier: 16
+original_multiplier: 3
+
+use_augmentations: true
+
+tags:
+  - final
+
+model:
+  backbone_path: google/matcha-base
+  max_length: 1024
+  max_patches: 2048
+  patch_size: 16
+  len_tokenizer: ???
+  pad_token_id: ???
+  decoder_start_token_id: ???
+  bos_token_id: ???
+  max_length_generation: 16 # 512
+
+awp:
+  use_awp: false
+  awp_trigger: 0.0
+  awp_trigger_epoch: 1
+  adv_lr: 8e-5
+  adv_eps: 0.001
+
+train_params:
+  train_bs: 2
+  valid_bs: 4
+
+  num_epochs: 1 # 4
+  grad_accumulation: 16
+  warmup_pct: 0.05
+
+  save_trigger: -1.0
+  use_fp16: true
+
+  eval_frequency: 16000 # 32000
+  patience: 100
+
+  use_ema: true
+  decay_rate: 0.9925
+
+
+
+optimizer:
+  lr: 5e-5
+  weight_decay: 1e-5
+  grad_clip_value: 1.0
+
+outputs:
+  model_dir: ../models/r_final
+
+
+fold_metadata:
+  n_folds: 2
+  fold_dir: ../datasets/processed/fold_split
+  fold_path: "cv_map_${fold_metadata.n_folds}_folds.parquet"
+
+competition_dataset:
+  data_dir: ../datasets/benetech-making-graphs-accessible
+  syn_dir: ../datasets/processed/synthetic
+  pl_dir: ../datasets/processed/mga_pl
+
+wandb:
+  project: mga-dev-a1
+  run_name: rb-exp100-r-final

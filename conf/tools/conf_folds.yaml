@@ -1,0 +1,7 @@
+competition_dataset:
+    data_dir: /kaggle/input/benetech-making-graphs-accessible
+
+fold_metadata:
+  n_folds: 2
+  seed: 461
+  fold_dir: ../datasets/processed/fold_split

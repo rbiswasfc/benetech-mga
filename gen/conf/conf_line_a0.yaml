@@ -1,0 +1,7 @@
+output:
+    image_dir: ../data/synthetic_line_a0/images
+    annotation_dir: ../data/synthetic_line_a0/annotations
+
+max_chars: 16
+max_points: 28
+num_images: 5000

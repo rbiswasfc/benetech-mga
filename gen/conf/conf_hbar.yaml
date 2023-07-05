@@ -1,0 +1,7 @@
+output:
+    image_dir: ../data/synthetic_hbar_b0/images
+    annotation_dir: ../data/synthetic_hbar_b0/annotations
+
+max_chars: 32
+max_points: 24
+num_images: 5000
